@@ -11,6 +11,7 @@ sudo jq ". += {\"insecure-registries\":[\"${BOOTSTRAP_REGISTRY}\"]}" /etc/docker
 sudo systemctl restart docker
 
 # update certificate to ignore hrbor self-signed cert
+mkdir -p "$REGISTRY_CERT_FOLDER"
 openssl s_client -showcerts -servername $BOOTSTRAP_REGISTRY -connect $BOOTSTRAP_REGISTRY:443 </dev/null | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > ./certificates/$BOOTSTRAP_REGISTRY.crt
 sudo cp ./certificates/$BOOTSTRAP_REGISTRY.crt /usr/local/share/ca-certificates/$BOOTSTRAP_REGISTRY.crt
 sudo update-ca-certificates
