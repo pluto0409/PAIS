@@ -95,6 +95,13 @@ for file in "$DOWNLOAD_DIR_YML"/*.y*ml; do
 
 done
 
+if [ "$STD_PACKAGE" ]; then
+    echo "===================================================="
+    echo "Download to VCF Add-on $STD_PACKAGE"
+    echo "===================================================="
+    vcf imgpkg copy -b "$STD_PACKAGE" --to-tar "$DOWNLOAD_DIR_TAR"/vks-standard-package.tar --cosign-signatures
+fi
+
 # --- Sync to Admin Host ---
 
 if [[ $SYNC_DIRECTORIES == "True" ]]; then
