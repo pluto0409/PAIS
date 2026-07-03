@@ -13,8 +13,8 @@ source ./config/env.config
 
 # --- Configuration ---
 # Direct URLs for VCF 9.1.0 (Verified from KB 415112 / User Testing)
-VCF_CLI_URL="https://pluto8487.synology.me/artifactory/vcf-distro/vcf-cli/linux/amd64/v9.1.0/VCF-Consumption-CLI-Linux_AMD64-9.1.0.0.25296329.tar.gz"
-VCF_PLUGIN_BUNDLE_URL="https://pluto8487.synology.me/artifactory/vcf-distro/vcf-cli-plugins/v9.1.0/linux/amd64/VCF-Consumption-CLI-PluginBundle-Linux_AMD64-9.1.0.0300.25509668.tar.gz"
+VCF_CLI_URL="https://${PRIVATE_REPO_URL}/artifactory/vcf-distro/vcf-cli/linux/amd64/v9.1.0/VCF-Consumption-CLI-Linux_AMD64-9.1.0.0.25296329.tar.gz"
+VCF_PLUGIN_BUNDLE_URL="https://${PRIVATE_REPO_URL}/artifactory/vcf-distro/vcf-cli-plugins/v9.1.0/linux/amd64/VCF-Consumption-CLI-PluginBundle-Linux_AMD64-9.1.0.0300.25509668.tar.gz"
 
 DOWNLOAD_DIR="$DOWNLOAD_DIR_BIN"
 mkdir -p "$DOWNLOAD_DIR"
