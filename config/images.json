@@ -3,16 +3,15 @@
         "nvcr.io/nvidia/gpu-operator:v25.10.1",
 		"nvcr.io/nvidia/cloud-native/k8s-driver-manager:v0.9.1",
         "nvcr.io/nvidia/cloud-native/gpu-operator-validator:v25.3.4",
-		"nvcr.io/nvidia/vgpu/vgpu-guest-driver-5:550.127.05-ubuntu24.04",
-        "nvcr.io/nvidia/vgpu/vgpu-guest-driver-6:570.124.06-ubuntu24.04",
-		"nvcr.io/nvidia/vgpu/vgpu-guest-driver-7:580.105.08-ubuntu24.04",
+		"nvcr.io/nvidia/driver:580.159.03-ubuntu24.04",
         "nvcr.io/nvidia/k8s/container-toolkit:v1.18.1",
         "nvcr.io/nvidia/k8s-device-plugin:v0.18.1",
         "nvcr.io/nvidia/cloud-native/k8s-mig-manager:v0.13.1",
         "nvcr.io/nvidia/cloud-native/dcgm:4.4.2-1-ubuntu22.04",
         "nvcr.io/nvidia/cloud-native/vgpu-device-manager:v0.4.1",
-        "nvcr.io/nvidia/cuda:13.0.1-base-ubi9",
+        "nvcr.io/nvidia/cuda:13.0.1-base-ubuntu24.04",
         "nvcr.io/nvidia/cloud-native/k8s-kata-manager:v0.2.2",
+		"registry.k8s.io/nfd/node-feature-discovery:v0.18.2",
         "nvcr.io/nvidia/kubevirt-gpu-device-plugin:v1.4.0",
         "nvcr.io/nvidia/k8s/dcgm-exporter:4.4.2-4.7.0-distroless",
 		"nvcr.io/nvidia/pytorch-pb24h1:24.03.02-py3",
@@ -22,8 +21,7 @@
 		"nvcr.io/nim/nvidia/nv-embedqa-e5-v5:1.10.1",
 		"nvcr.io/nvidia/aiworkflows/rag-playground:24.08",
 		"nvcr.io/nvidia/aiworkflows/rag-application-multiturn-chatbot:24.08",
-        "projects.packages.broadcom.com/vra/tkg-gpu-console:v1.0",
-        "registry.k8s.io/nfd/node-feature-discovery:v0.18.3"
+        "projects.packages.broadcom.com/vra/tkg-gpu-console:v1.0"
     ],
 	"models":{
 		"llm":[
