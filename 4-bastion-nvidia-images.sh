@@ -28,6 +28,8 @@ for image in "${container_images[@]}"; do
     fi
 done
 
+mkdir -p "$DOWNLOAD_DIR_NVD_TAR"
+
 # helm gpu-operator chart
 for image in "${helm_charts[@]}"; do
     filename=""
