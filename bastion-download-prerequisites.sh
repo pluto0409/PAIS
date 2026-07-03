@@ -48,9 +48,9 @@ mkdir -p "$DOWNLOAD_DIR_BIN"
 echo "Downloading all Supervisor Services configuration files..."
 
 # TKG Service
-wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-tkg-service.yaml          'https://pluto8487.synology.me/artifactory/vsphere-distro/vsphere/iaas/kubernetes-service/vsphere-kubernetes-service-3.6.1+v1.35.yml'
-wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-harbor.yaml          'https://pluto8487.synology.me/artifactory/vsphere-distro/vsphere/iaas/harbor/legacy-harbor-svs-v2.14.2+vmware.2-vks.1-25220498.yml'
-wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-harbor-values.yaml   'https://pluto8487.synology.me/artifactory/vsphere-distro/vsphere/iaas/harbor/harbor-data-values-v2.14.2.yml'
+wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-tkg-service.yaml         'https://${PRIVATE_REPO_URL}/artifactory/vsphere-distro/vsphere/iaas/kubernetes-service/vsphere-kubernetes-service-3.6.1+v1.35.yml'
+wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-harbor.yaml          'https://${PRIVATE_REPO_URL}/artifactory/vsphere-distro/vsphere/iaas/harbor/legacy-harbor-svs-v2.14.2+vmware.2-vks.1-25220498.yml'
+wget --user="$PRIVATE_REPO_USERNAME" --password="$PRIVATE_REPO_PASSWORD" -O "$DOWNLOAD_DIR_YML"/supsvc-harbor-values.yaml   'https://${PRIVATE_REPO_URL}/artifactory/vsphere-distro/vsphere/iaas/harbor/harbor-data-values-v2.14.2.yml'
 #wget -q -O "$DOWNLOAD_DIR_YML"/supsvc-externaldns.yaml     'https://packages.broadcom.com/artifactory/vsphere-distro/vsphere/iaas/external-dns/external-dns-service-0.14.2.yml'
 #wget -q -O "$DOWNLOAD_DIR_YML"/supsvc-externaldns-values.yaml     'https://packages.broadcom.com/artifactory/vsphere-distro/vsphere/iaas/external-dns/external-dns-data-values_0.14.2.yaml'
 
