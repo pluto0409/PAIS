@@ -119,10 +119,22 @@ helm repo update
 helm pull nvidia/gpu-operator --untar --untardir "$DOWNLOAD_DIR/charts"
 
 # download nginx deb files
-mkdir $NGINX_OFFLINE && cd $NGINX_OFFLINE
+TMP_NGINX_DIR="/tmp/nginx_offline_deb"
+rm -rf "$TMP_NGINX_DIR" && mkdir -p "$TMP_NGINX_DIR"
+
+# _apt 계정이 접근할 수 있도록 임시 폴더 권한 부여
+sudo chown -R _apt:root "$TMP_NGINX_DIR"
+cd "$TMP_NGINX_DIR"
+
 sudo apt-get update
 sudo apt-get download $(apt-cache depends --recurse --no-recommends --no-suggests \
   --no-conflicts --no-breaks --no-replaces --no-enhances nginx | grep "^\w" | sort -u)
+
+# 원래 목적인 실제 프로젝트 폴더로 파일 이동 및 복귀
+cd - > /dev/null
+mkdir -p "$NGINX_OFFLINE"
+mv "$TMP_NGINX_DIR"/* "$NGINX_OFFLINE/"
+rm -rf "$TMP_NGINX_DIR"
 
 echo "
 ==============================================================================
