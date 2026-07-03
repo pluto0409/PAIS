@@ -47,8 +47,6 @@ mkdir -p "$DOWNLOAD_DIR_BIN"
 # Download the package.yaml files for all the Supervisor Services. Modify as needed.
 echo "Downloading all Supervisor Services configuration files..."
 
-artifactory
-
 # TKG Service
 wget --user="vcfuser" --password="sYrma0f@qur" -O "$DOWNLOAD_DIR_YML"/supsvc-tkg-service.yaml          'https://pluto8487.synology.me/artifactory/vsphere-distro/vsphere/iaas/kubernetes-service/vsphere-kubernetes-service-3.6.1+v1.35.yml'
 wget --user="vcfuser" --password="sYrma0f@qur" -O "$DOWNLOAD_DIR_YML"/supsvc-harbor.yaml          'https://pluto8487.synology.me/artifactory/vsphere-distro/vsphere/iaas/harbor/legacy-harbor-svs-v2.14.2+vmware.2-vks.1-25220498.yml'
@@ -64,6 +62,15 @@ for file in "$DOWNLOAD_DIR_YML"/*.y*ml; do
     full_filename=$(basename "$file")
     file_name="${full_filename%.y*ml}"   
     image=$(yq -P '(.|select(.kind == "Package").spec.template.spec.fetch[].imgpkgBundle.image)' "$file")
+
+    # ==============================================================================
+    # 🔥 [추가] depot.kube-system.svc 주소가 포함되어 있으면 이 파일은 건너뜁니다.
+    # ==============================================================================
+    if [[ "$image" == *"depot.kube-system.svc"* ]]; then
+        #echo "⚠️ 건너뛰기: 내부 전용 주소($image)가 포함되어 있어 다운로드를 생략합니다."
+        continue  # 아래 코드를 실행하지 않고 다음 파일(for 루프)로 바로 넘어갑니다.
+    fi
+    # ==============================================================================
 
     if [ "$image" ]
     then
@@ -84,6 +91,9 @@ for file in "$DOWNLOAD_DIR_YML"/*.y*ml; do
         echo $a
     fi
 done
+
+echo Download to VCF Add-on $STD_PACKAGE
+vcf imgpkg copy -b "$STD_PACKAGE" --to-tar "$DOWNLOAD_DIR_TAR"/"$file_name".tar --cosign-signatures
 
 # --- Sync to Admin Host ---
 
